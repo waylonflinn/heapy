@@ -4,6 +4,8 @@ Operations have the following algorithmic complexities:
 
 * `pop` - `O(log(n))`
 * `push` - `O(log(n))` (average: `O(1)`)
+* `peek` - `O(1)`
+* `remove` - `O(log(n))`
 
 Useful for:
 
@@ -22,8 +24,9 @@ to `O(m*log(n))`, for `n` nodes and `m` edges.
 from heapy import pqueue
 
 def dijkstra(G, r):
-	'''Find the shortest paths from a given node in a weighted graph
-		to every other (connected) node.
+	'''
+	Find the shortest paths from a given node in a weighted graph
+	to every other (connected) node.
 	'''
 
     todo = pqueue() # this is the heap-based priority queue
@@ -35,7 +38,7 @@ def dijkstra(G, r):
 
     n = None
 
-    while todo: # automatically checks `len(todo) > 0`
+    while todo: # automatically checks len(todo) > 0
         p = n
         (n, d) = todo.pop() # get the minimum element; O(log(n))
 
@@ -48,7 +51,7 @@ def dijkstra(G, r):
         for (c, w) in children.items():
             if c not in distance and (c not in todo or d + w < todo[c]):
 
-                todo.push((c, d + w)) # will update, if already in the queue
+                todo.push((c, d + w)) # add or update distance ~ O(1)
 
     return distance
 ```
