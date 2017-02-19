@@ -23,18 +23,19 @@ class pqueue_min:
 			self._l = build_heap(l, self._index)
 
 	# remove and return the min
-	def pop(self, t=None):
+	def pop(self, n=None):
 		"""
+			Remove and return the min tuple, or the tuple for the specified key.
 			Returns
-				tuple (item, weight)
+				tuple (key, weight)
 		"""
 
 		if len(self._l) == 0 : return None
 
-		if t == None: # default get's the min
+		if n == None: # default get's the min
 			i = 0
 		else: # if an item is supplied, remove it
-			i = self._index[t[0]]
+			i = self._index[n]
 
 		m = self._l[i]
 		del self._index[m[0]]
@@ -53,7 +54,8 @@ class pqueue_min:
 	# add an element
 	def push(self, t):
 		"""
-			t - tuple (item, weight)
+			Add an element as a key weight pair.
+			t - tuple (key, weight)
 		"""
 		# existing element?
 		if t[0] in self._index:
@@ -67,9 +69,14 @@ class pqueue_min:
 
 	# return the min (without removal)
 	def peek(self):
+		"""Return the minimum (as a tuple), without removing it."""
 		if len(self._l) == 0: return None
 
 		return self._l[0]
+
+	def remove(self, n):
+		"""Remove the element with the specified key, and return it's tuple."""
+		return self.pop(n)
 
 	def _update(self, t):
 
