@@ -13,6 +13,9 @@ Useful for:
 * A*
 * Rolling median
 
+## Install
+`pip install heapy`
+
 ## Examples
 The following is an example implementation of Dijkstra's algorithm, a method
 for finding the shortest path in a weighted graph. The heap-based
