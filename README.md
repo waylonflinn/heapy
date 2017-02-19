@@ -27,6 +27,14 @@ def dijkstra(G, r):
 	'''
 	Find the shortest paths from a given node in a weighted graph
 	to every other (connected) node.
+
+	G should be a dictionary of dictionaries.
+	{
+		'a' : {'b' : 2, 'c' : 1},
+		'b' : {'a' : 2, 'd' : 3},
+		'c' : {'a' : 1},
+		'd' : {'b' : 3}
+	}
 	'''
 
     todo = pqueue() # this is the heap-based priority queue
