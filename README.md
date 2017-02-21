@@ -35,26 +35,22 @@ def dijkstra(G, r):
     todo = pqueue() # this is the heap-based priority queue
 
     distance = {} # distances to all nodes on shortest paths
-    parents = {} # parent pointers for all items on known shortest paths
+    parents = { r: None } # parent pointers for all items on known shortest paths
 
     todo.push((r, 0)) # alternate syntax: todo[r] = 0
 
-    n = None
-
     while todo: # automatically checks len(todo) > 0
-        p = n
         (n, d) = todo.pop() # get the minimum element; O(log(n))
 
-
-        distance[n] = d # shortest distance
-        parents[n] = p # parent in minimum path spanning tree
+        distance[n] = d # save shortest distance
 
         # update position of children in priority queue, if less
         children = G.get(n, {})
         for (c, w) in children.items():
             if c not in distance and (c not in todo or d + w < todo[c]):
 
-                todo.push((c, d + w)) # add or update distance ~ O(1)
+                todo[c] = d + w # add or update distance ~ O(1)
+                parents[c] = n # update parent in minimum path distance spanning tree
 
     return distance
 ```
