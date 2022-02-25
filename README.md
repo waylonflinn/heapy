@@ -1,4 +1,4 @@
-An priority queue built with an in-place modifiable binary heap.
+An priority queue built with an in-place modifiable binary heap (decrease-key,increase-key).
 
 Operations have the following algorithmic complexities:
 
